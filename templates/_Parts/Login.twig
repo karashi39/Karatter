@@ -1,0 +1,30 @@
+{% autoescape true %}
+<div class="postform">
+
+  <h1>ログイン</h1>
+
+  <form method="post" action="/login/commit">
+
+    <input type="hidden" name="{{csrf_key}}" value="{{csrf_token}}">
+ 
+     <div class="form-group {% if error_list.nickname %}has-error{% endif %}">
+       <p class="control">
+         <label class="label">ID</label>
+         <input type="text" name="id" value="{{login.id}}" class="form-control">
+         <p class="text-warning">{{error_list.nickname}}</p>
+       </p>
+    </div>
+
+    <div class="form-group" {% if error_list.body %}has-error{% endif %}">
+      <p class="control">
+        <label class="label">PASS</label>
+        <input type="password" name="pass" value="{{login.pass}}" class="form-control">
+        <p class="text-warning">{{error_list.body}}</p>
+      </p>
+    </div>
+
+    <input type="submit" class="button is-primary" value="Login">
+
+  </form>
+</div>
+{% endautoescape %}

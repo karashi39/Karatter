@@ -1,0 +1,22 @@
+{% extends "frame.twig" %}
+{% block content %}
+{% autoescape true %}
+  {% include "_Parts/Form.twig" %}
+
+  <hr>
+  {% include "_Parts/Pager.twig" %}
+
+  {% for post in post_list %}
+    <div class="message is-primary">
+      <div class="message-header"> 
+        post by <span class="nickname">{{ post.nickname }} </span>
+        <span class="date">({{ post.created_at }})</span>
+      </div>
+      <div class="message-body" style="word-wrap: break-word;">{{ post.body|nl2br }}</div>
+    </div>
+  {% endfor %}
+
+  {% include "_Parts/Pager.twig" %}
+
+{% endautoescape %}
+{% endblock %}

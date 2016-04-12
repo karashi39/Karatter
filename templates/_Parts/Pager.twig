@@ -1,0 +1,21 @@
+{% autoescape true %}
+  <nav class="navbar"><p class="navbar-item is-text-centered">
+    {% if page_num > 1 %}
+      {% if (page_num-1) == 1 %}
+        <a href="/home" "class="prev">&laquo;</a>
+      {% else %}
+        <a href="/page/{{page_num-1}}" class="prev">&laquo;</a>
+      {% endif %}
+    {% else %}
+      &laquo;
+    {% endif %}
+
+    {{page_num}}
+
+    {% if next_page_is_exist %}
+      <a href="/page/{{page_num+1}}" class="next">&raquo;</a>
+    {% else %}
+      &raquo;
+    {% endif %}
+  </p></nav>
+{% endautoescape %}

@@ -1,0 +1,42 @@
+{% autoescape true %}
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Tinitter</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.0.15/css/bulma.min.css">
+</head>
+<body>
+<section class="hero is-primary is-bold">
+  <div class="hero-content">
+    <div class="container">
+      <h1 class="title">Tinitter</h1>
+      <h2 class="subtitle">my first web app</h2>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="content">
+      {% block content %}{% endblock %}
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="content is-centered">
+      <p>Powered by <strong>PHP</strong></p>
+      <p>
+        <strong>Bulma</strong> by <a href="http://jgthms.com">Jeremy Thomas</a>. The source code is licensed
+        <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+        is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC ANS 4.0</a>.
+      </p>
+      <p><a class="icon" href="https://github.com/jgthms/bulma"> <i class="fa fa-github"></i></a></p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
+{% endautoescape %}
