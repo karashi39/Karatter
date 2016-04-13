@@ -7,22 +7,21 @@
 
     <input type="hidden" name="{{csrf_key}}" value="{{csrf_token}}">
  
-     <div class="form-group {% if error_list.nickname %}has-error{% endif %}">
+    <div class="form-group {% if error_list.error %}has-error{% endif %}">
        <p class="control">
          <label class="label">ID</label>
-         <input type="text" name="id" value="{{login.id}}" class="form-control">
-         <p class="text-warning">{{error_list.nickname}}</p>
+         <input type="text" name="name" value="{{login.name}}" class="form-control">
        </p>
     </div>
 
-    <div class="form-group" {% if error_list.body %}has-error{% endif %}">
+    <div class="form-group">
       <p class="control">
         <label class="label">PASS</label>
         <input type="password" name="pass" value="{{login.pass}}" class="form-control">
-        <p class="text-warning">{{error_list.body}}</p>
       </p>
     </div>
 
+    <p class="text-warning">{{error_list.error}}</p>
     <input type="submit" class="button is-primary" value="Login">
 
   </form>

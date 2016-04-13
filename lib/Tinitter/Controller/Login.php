@@ -13,23 +13,20 @@ class Login
     public function commit (){
         $app = \Slim\Slim::getInstance();
         $params = $app->request->params();
-        //$error_list = V_Post::byArray($params);
+        $error_list = \Tinitter\Validator\Login::byArray($params);
 
-        //if(empty($error_list)){
-        //    $post = new M_Post;
-        //    $post->nickname = $params['nickname'];
-        //    $post->body = $params['body'];
-        //    $post->save();
-
-            $app->redirect('/home');
-        //}else{
-        //    $app->render(
-        //        'Post/form.twig',
-        //        [
-        //            'params' => $params,
-        //            'error_list' => $error_list
-        //        ]
-        //    );
-        //}
+        if(empty($error_list)){
+            $app->setCookie('login',1,time()+120);
+            $app->redirect('/login/ok');
+        }else{
+            $app->deleteCookie('login');            
+            $app->render(
+                'Login/show.twig',
+                [
+                    'params' => $params,
+                    'error_list' => $error_list
+                ]
+            );
+        }
     }
 }
