@@ -6,6 +6,30 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.0.15/css/bulma.min.css">
 </head>
 <body>
+
+
+<header class="header">
+  <div class="container">
+    <!-- Left side -->
+    <div class="header-left">
+      <a class="header-item" href="#"><img src="images/bulma.png" alt="Logo"></a>
+      <a class="header-tab" href="#">Tab</a>
+      <a class="header-tab is-active" href="#">Active tab</a>
+    </div>
+
+    <!-- Right side -->
+    <div class="header-right header-menu">
+      <span class="header-item"><a href="#">Nav item</a></span>
+      <span class="header-item"><a href="#">Other nav item</a></span>
+      {% if login_status == 1 %}
+        <span class="header-item"><a class="button is-primary" href="/logout">logout</a></span>
+      {% else %}
+        <span class="header-item"><a class="button is-primary" href="/login">login</a></span>
+      {% endif %}
+    </div>
+  </div>
+</header>
+
 <section class="hero is-primary is-bold">
   <div class="hero-content">
     <div class="container">

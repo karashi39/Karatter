@@ -7,9 +7,11 @@ class TimeLine
     {
         $app = \Slim\Slim::getInstance();
         list($post_list, $next_page_is_exist) = M_Post::getByPage(10,$page_num);
+        $login_status = $app->getCookie('login');
         $app->render(
             'TimeLine/show.twig',
             [
+                'login_status' => $login_status,
                 'post_list' => $post_list,
                 'page_num' => $page_num,
                 'next_page_is_exist' => $next_page_is_exist

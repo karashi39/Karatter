@@ -16,8 +16,8 @@ class Login
         $error_list = \Tinitter\Validator\Login::byArray($params);
 
         if(empty($error_list)){
-            $app->setCookie('login',1,time()+120);
-            $app->redirect('/login/ok');
+            $app->setCookie('login',1,time()+1200);
+            $app->redirect('/home');
         }else{
             $app->deleteCookie('login');            
             $app->render(
@@ -28,5 +28,11 @@ class Login
                 ]
             );
         }
+    }
+
+    public function logout (){
+        $app = \Slim\Slim::getInstance();
+        $app->deleteCookie('login');            
+        $app->redirect('/home');
     }
 }
