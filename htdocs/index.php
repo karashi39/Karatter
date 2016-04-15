@@ -15,18 +15,7 @@ $app = new \Slim\Slim([
     'view' => new \Slim\Views\Twig()
 ]);
 
-if($app->getCookie('login')){
-    $app->get('/login/ok', function(){echo "login";});
-}else{
-    $app->get('/login/ok', function(){echo "logout";});
-}
-
 $app->add(new \Slim\Extras\Middleware\CsrfGuard());
-$app->post('/post/commit','\Tinitter\Controller\Post:commit');
-$app->post('/login/commit','\Tinitter\Controller\Login:commit');
-$app->get('/page/:page_num','\Tinitter\Controller\TimeLine:show');
-$app->get('/home','\Tinitter\Controller\TimeLine:show');
-$app->get('/login','\Tinitter\Controller\Login:login');
 \Tinitter\Route::registration($app);
 
 $app->run();
