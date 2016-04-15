@@ -15,7 +15,6 @@ $app = new \Slim\Slim([
     'view' => new \Slim\Views\Twig()
 ]);
 
-$app->add(new \Slim\Extras\Middleware\CsrfGuard());
 \Tinitter\Route::registration($app);
 
 $app->run();

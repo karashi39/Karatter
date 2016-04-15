@@ -13,5 +13,6 @@ class Route{
         $app->get('/page/:page_num','\Tinitter\Controller\TimeLine:show');
         $app->get('/home','\Tinitter\Controller\TimeLine:show');
         $app->get('/login','\Tinitter\Controller\Login:login');
+        $app->add(new \Slim\Extras\Middleware\CsrfGuard());
     }
 }
