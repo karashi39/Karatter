@@ -6,14 +6,30 @@
   <hr>
   {% include "_Parts/Pager.twig" %}
 
+
   {% for post in post_list %}
+
+    {% if login_status == 1 %}
+      <div class="form-group">
+        <p class="control">      
+          <form method="post" action="/post/delete">
+            <input type="hidden" name="{{csrf_key}}" value="{{csrf_token}}">
+            <input type="hidden" name="id" value="{{post.id}}">
+            <input type="submit" class="button is-primary is-small" value="delete post {{post.id}}">
+           </form>
+           <br>
+        </p>
+      </div>
+    {% endif %}
+  
     <div class="message is-primary">
       <div class="message-header"> 
-        post by <span class="nickname">{{ post.nickname }} </span>
+        {{ post.id }} post by <span class="nickname">{{ post.nickname }} </span>
         <span class="date">({{ post.created_at }})</span>
       </div>
       <div class="message-body" style="word-wrap: break-word;">{{ post.body|nl2br }}</div>
     </div>
+
   {% endfor %}
 
   {% include "_Parts/Pager.twig" %}

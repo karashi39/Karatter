@@ -12,6 +12,7 @@ class Post{
             $post = new M_Post;
             $post->nickname = $params['nickname'];
             $post->body = $params['body'];
+            $post->deleted = '0';
             $post->save();
 
             $app->redirect('/home');
@@ -24,5 +25,16 @@ class Post{
                 ]
             );
         }
+    }
+
+    public function deletePost (){
+        $app = \Slim\Slim::getInstance();
+        $params = $app->request->params();
+        //$params = [ 'id'=>5 ];
+
+        $post = new M_Post;
+        $post->where('id', $params['id'])->update(['deleted' => 1]);
+
+        $app->redirect('/home'); 
     }
 }
